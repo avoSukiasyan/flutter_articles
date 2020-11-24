@@ -19,7 +19,8 @@ class AvatarWidgete extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  child: Text('${article.userName} - ${this.article.runtimeType} hrs ago'),
+                  child: Text(
+                      '${article.userName} - ${this.article.runtimeType} hrs ago'),
                 ),
                 Container(
                   alignment: Alignment.centerRight,

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:manufacturer/Screens/bookmarksScreen.dart';
 import 'package:manufacturer/Screens/homeScreen.dart';
 import 'package:manufacturer/enum/enum.dart';
-import 'package:manufacturer/model/article.dart';
 import 'package:manufacturer/parsingJson/dataManager.dart';
 
 class Dashboard extends StatefulWidget {
@@ -25,7 +24,6 @@ class _Dashboard extends State<Dashboard> with SingleTickerProviderStateMixin {
       _currentIndex = index;
     });
   }
-
 
   void changeListItems(int id, ChangeList action, RemoveFrom from) {
     setState(() {

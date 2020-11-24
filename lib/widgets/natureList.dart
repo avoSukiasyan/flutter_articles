@@ -19,7 +19,7 @@ class NatureList extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-        padding: EdgeInsets.only(right: 20, left: 10,top: 6),
+        padding: EdgeInsets.only(right: 20, left: 10, top: 6),
         height: checkPhotos(),
         child: photos.length == 0
             ? SizedBox(

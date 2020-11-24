@@ -4,7 +4,7 @@ class BottomLineWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return  Container(
+    return Container(
       padding: EdgeInsets.only(top: 15),
       child: SizedBox(
         width: MediaQuery.of(context).size.width,

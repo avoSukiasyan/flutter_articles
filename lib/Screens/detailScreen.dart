@@ -51,6 +51,16 @@ class _DetailScreen extends State<DetailScreen> {
           ];
   }
 
+  Text appBarTitle() {
+    switch (widget.from) {
+      case RemoveFrom.articles:
+        return Text("Article Detail");
+      case RemoveFrom.bookmark:
+        return Text("Bookmark Detail");
+    }
+  }
+
+
   @override
   void initState() {
     // TODO: implement initState
@@ -64,14 +74,16 @@ class _DetailScreen extends State<DetailScreen> {
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.black),
           backgroundColor: Colors.white,
-          title: Text(""),
+          title: appBarTitle(),
           actions: checkBookmarks(),
         ),
         body: ListView(
           children: [
             UserNameWidget(article: widget.article),
-            AvatarWidgete(article: widget.article,),
-            ImagesWidget(article: widget.article),
+            AvatarWidgete(
+              article: widget.article,
+            ),
+            ImagesWidget(article: widget.article)
           ],
         ));
   }

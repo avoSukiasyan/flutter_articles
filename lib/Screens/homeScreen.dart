@@ -1,14 +1,8 @@
-import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:manufacturer/Screens/detailScreen.dart';
 import 'package:manufacturer/enum/enum.dart';
 import 'package:manufacturer/model/article.dart';
-import 'package:manufacturer/parsingJson/dataManager.dart';
-import 'package:manufacturer/widgets/ItemWidget.dart';
-import 'package:flutter/services.dart' show rootBundle;
-import 'dart:async' show Future;
 import 'package:manufacturer/widgets/listViewWidget.dart';
 
 class HomeScreen extends StatefulWidget {

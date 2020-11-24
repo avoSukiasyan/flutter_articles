@@ -18,6 +18,11 @@ class ItemWidget extends StatelessWidget {
 
   ItemWidget({@required this.from, this.article, this.changeListItems});
 
+  Widget imageList() {
+    return this.article.images.isEmpty != true ?  NatureList(photos: this.article.images) : SizedBox(width: 5, height: 5);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -48,7 +53,7 @@ class ItemWidget extends StatelessWidget {
                 children: [
                   ArticleWidget(article: this.article),
                   DescriptionWidget(description: this.article.description),
-                  NatureList(photos: this.article.images),
+                  imageList(),
                   BottomLineWidget(),
                 ],
               )),

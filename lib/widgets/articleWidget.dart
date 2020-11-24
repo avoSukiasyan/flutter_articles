@@ -20,14 +20,6 @@ class ArticleWidget extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Positioned(
-                    left: 0,
-                    top: 0,
-                    bottom: 0,
-                    width: 0,
-                    child: Container(
-                        color: Colors.white), // replace with your image
-                  ),
                   Text(
                     '${this.article.userName} - ${this.article.elapsedTimeInHour} hrs ago',
                     maxLines: 1,

@@ -19,7 +19,14 @@ class ImagesWidget extends StatelessWidget {
           physics: BouncingScrollPhysics(),
           children: this.article.images.map((String item) {
             return Container(
-                padding: EdgeInsets.all(2), child: Image.network(item, fit: BoxFit.fill,));
+                padding: EdgeInsets.all(2),
+                child: Image.network(
+                  item,
+                  fit: BoxFit.fill,
+                  errorBuilder: (BuildContext context, Object exception, StackTrace stackTrace) {
+                    return Text('Your error widget...');
+                  },
+                ));
           }).toList(),
         ));
   }
