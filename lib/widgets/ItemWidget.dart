@@ -13,6 +13,7 @@ class ItemWidget extends StatelessWidget {
 
   RemoveFrom from;
 
+  // Fixme use typeAlias
   final void Function(int id, ChangeList action, RemoveFrom from)
       changeListItems;
 
@@ -22,12 +23,12 @@ class ItemWidget extends StatelessWidget {
     return this.article.images.isEmpty != true ?  NatureList(photos: this.article.images) : SizedBox(width: 5, height: 5);
   }
 
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return InkResponse(
         onTap: () {
+          // Fixme move tap handling out of item
           Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => DetailScreen(
                     from: this.from,
@@ -47,10 +48,14 @@ class ItemWidget extends StatelessWidget {
                   this.article.id, ChangeList.removeItem, this.from),
             ),
           ],
+          // Use padding instead
           child: Container(
+            // Fixme left:0, default is 0
               padding: EdgeInsets.only(left: 0, top: 10),
               child: Column(
                 children: [
+                  // Fixme, do not separate content to different classes,
+                  // as those classes are only used here
                   ArticleWidget(article: this.article),
                   DescriptionWidget(description: this.article.description),
                   imageList(),

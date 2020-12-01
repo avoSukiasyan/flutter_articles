@@ -9,6 +9,7 @@ class ImagesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    // Fixme better to use slivers
     return Container(
         width: MediaQuery.of(context).size.width,
         height: (this.article.images.length * 150).toDouble(),

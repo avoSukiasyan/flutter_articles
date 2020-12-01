@@ -10,6 +10,7 @@ class MyApp extends StatefulWidget {
   _MyApp createState() => _MyApp();
 }
 
+// Fixme why StatefulWidget, could be Stateless
 class _MyApp extends State<MyApp> {
   // This widget is the root of your application.
   @override

@@ -42,10 +42,12 @@ class _Dashboard extends State<Dashboard> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    // Fixme useless TabController
     return DefaultTabController(
         length: 2,
         child: Scaffold(
           appBar: null,
+          // Fixme useless container
           bottomNavigationBar: Container(
               child: BottomNavigationBar(
             fixedColor: Colors.black,
@@ -56,6 +58,7 @@ class _Dashboard extends State<Dashboard> with SingleTickerProviderStateMixin {
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.archive),
+                // Fixme use label
                 title: Text('Articles'),
               ),
               BottomNavigationBarItem(
@@ -64,6 +67,7 @@ class _Dashboard extends State<Dashboard> with SingleTickerProviderStateMixin {
               ),
             ],
           )),
+          // Fixme use PageView
           body: IndexedStack(
             index: _currentIndex,
             children: [

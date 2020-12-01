@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:manufacturer/widgets/imageItemWidget.dart';
 
 class NatureList extends StatelessWidget {
+  // Fixme change to final List<String> photos;
   List<String> photos = [];
 
   NatureList({this.photos});
@@ -22,6 +23,8 @@ class NatureList extends StatelessWidget {
         padding: EdgeInsets.only(right: 20, left: 10, top: 6),
         height: checkPhotos(),
         child: photos.length == 0
+        // Fixme change to Container,
+        // Fixme why is this
             ? SizedBox(
                 child: Container(
                   color: Colors.white,

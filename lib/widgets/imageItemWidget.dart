@@ -16,6 +16,7 @@ class ImageItemWidget extends StatelessWidget {
               return Text('Your error widget...');
             },
           ),
+        // Fixme use Container only
         SizedBox(
           child: Container(
             color: Colors.white,

@@ -18,10 +18,12 @@ class AvatarWidgete extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                // Fixme useless Container
                 Container(
                   child: Text(
                       '${article.userName} - ${this.article.runtimeType} hrs ago'),
                 ),
+                // Fixme use Alignment
                 Container(
                   alignment: Alignment.centerRight,
                   child: ClipRRect(

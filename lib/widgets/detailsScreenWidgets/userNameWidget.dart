@@ -10,6 +10,7 @@ class UserNameWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
+    // Fixme use Padding
     return Container(
       padding: EdgeInsets.only(top: 10, left: 10),
       child: Text(
@@ -18,6 +19,7 @@ class UserNameWidget extends StatelessWidget {
           fontWeight: FontWeight.bold,
           fontSize: 22,
         ),
+        // Fixme maxLines = 100 ?
         maxLines: 100,
       ),
     );

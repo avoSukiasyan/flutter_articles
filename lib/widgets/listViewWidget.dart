@@ -4,9 +4,11 @@ import 'package:manufacturer/model/article.dart';
 import 'package:manufacturer/widgets/ItemWidget.dart';
 
 class ListViewWidget extends StatelessWidget {
+  // Fixme make fields final
   List<Article> articles;
   RemoveFrom from;
 
+  // Fixme define type alias for this callback
   void Function(int id, ChangeList action, RemoveFrom from) changeListItems;
 
   ListViewWidget({@required this.articles, this.changeListItems, this.from});

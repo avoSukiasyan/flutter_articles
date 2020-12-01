@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:manufacturer/model/article.dart';
 import 'package:http/http.dart' as http;
 
+// Fixme create  singleton class for this
 class DataManager {
   static List<Article> articles = [];
   static List<Article> bookmarksArticles = [];
@@ -64,6 +65,7 @@ class DataManager {
   }
 
   static Future<List<Article>> searchListAction(String name) async {
+    // Fixme use !name.isEmpty ?? false
     if (!name.isEmpty) {
       final list = await getSearchData(name);
       return list;
