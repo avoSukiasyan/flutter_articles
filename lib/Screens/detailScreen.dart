@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:manufacturer/Screens/mapScreen.dart';
 import 'package:manufacturer/enum/enum.dart';
 import 'package:manufacturer/model/article.dart';
 import 'package:manufacturer/widgets/detailsScreenWidgets/avatarWidget.dart';
@@ -60,6 +61,26 @@ class _DetailScreen extends State<DetailScreen> {
     }
   }
 
+  Widget showMapButton() {
+    return widget.article.location != null
+        ? FloatingActionButton(
+            backgroundColor: Colors.white,
+            child: Tab(
+                icon: Image.asset(
+              'assets/images/location.jpg',
+              width: 20,
+              height: 20,
+            )),
+            onPressed: () {
+              Navigator.of(context).push(
+
+                PageRouteBuilder(
+                  pageBuilder: (context, _, __) => MapScreen(article: widget.article), opaque: false),
+                );
+            },
+          )
+        : SizedBox();
+  }
 
   @override
   void initState() {
@@ -83,8 +104,9 @@ class _DetailScreen extends State<DetailScreen> {
             AvatarWidgete(
               article: widget.article,
             ),
-            ImagesWidget(article: widget.article)
+            ImagesWidget(article: widget.article),
           ],
-        ));
+        ),
+        floatingActionButton: showMapButton());
   }
 }

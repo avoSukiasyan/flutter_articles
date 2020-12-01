@@ -1,22 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:manufacturer/model/article.dart';
+import 'package:flutter/material.dart';
 
 class ArticleWidget extends StatelessWidget {
   Article article;
 
   ArticleWidget({this.article});
 
+
+  Widget location() {
+    return article.location != null ? Container(
+      alignment: Alignment.center,
+      child: Image.asset(
+        'assets/images/location.jpg',
+        width: 20,
+        height: 20,
+      ),
+    ) : SizedBox();
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Container(
-        padding: EdgeInsets.only(right: 20),
+        padding: EdgeInsets.only(right: 7, left: 10),
         width: MediaQuery.of(context).size.width,
         height: 50,
-        child: Stack(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            location(),
             Container(
-              padding: EdgeInsets.only(right: 60, left: 10),
+              width: MediaQuery.of(context).size.width * 0.78,
+             // padding: EdgeInsets.only(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -36,23 +52,19 @@ class ArticleWidget extends StatelessWidget {
                 ],
               ),
             ),
-            Stack(
-              children: [
-                Positioned.fill(
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(30),
-                      child: Image.network(
-                        '${this.article.userImage}',
-                        width: 70,
-                        height: 70,
-                      ),
-                    ),
+            Positioned.fill(
+              child: Align(
+                alignment: Alignment.bottomRight,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.network(
+                    '${this.article.userImage}',
+                    width: 50,
+                    height: 50,
                   ),
-                )
-              ],
-            ),
+                ),
+              ),
+            )
           ],
         ));
   }

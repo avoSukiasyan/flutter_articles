@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_google_maps/flutter_google_maps.dart';
 import 'package:manufacturer/Screens/dashboard.dart';
 
 void main() {
+  GoogleMap.init("AIzaSyBiRV3-06C5Fbk1qrPlzRmgTEjSMhBk0Uo");
   runApp(MyApp());
 }
 

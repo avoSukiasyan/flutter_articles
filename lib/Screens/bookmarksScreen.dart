@@ -28,52 +28,52 @@ class _BookmarksScreen extends State<BookmarksScreen> {
   AppBar _appBarActionsReturnText() {
     return selectSearch == false
         ? AppBar(
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            color: Colors.black,
-            onPressed: () {
-              setState(() {
-                selectSearch = true;
-              });
-            },
-          )
-        ],
-        elevation: 10.0,
-        centerTitle: false,
-        backgroundColor: Colors.white,
-        title: Text(
-          "Bookmarks",
-          style: TextStyle(color: Colors.black),
-        ))
+            actions: [
+                IconButton(
+                  icon: Icon(Icons.search),
+                  color: Colors.black,
+                  onPressed: () {
+                    setState(() {
+                      selectSearch = true;
+                    });
+                  },
+                )
+              ],
+            elevation: 10.0,
+            centerTitle: false,
+            backgroundColor: Colors.white,
+            title: Text(
+              "Bookmarks",
+              style: TextStyle(color: Colors.black),
+            ))
         : AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.close),
-          color: Colors.black,
-          onPressed: () {
-            DataManager.searchListAction("")
-                .then((value) => widget.articles = value);
-            setState(() {
-              selectSearch = false;
-            });
-          },
-        ),
-        elevation: 10.0,
-        centerTitle: false,
-        backgroundColor: Colors.white,
-        title: Container(
-          padding: EdgeInsets.only(left: 15),
-          height: 40,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(15),
-              color: Colors.black12),
-          child: TextField(
-            onChanged: (value) {},
-            onSubmitted: _onSubmitted,
-            decoration: InputDecoration(
-                border: InputBorder.none, hintText: 'Search'),
-          ),
-        ));
+            leading: IconButton(
+              icon: Icon(Icons.close),
+              color: Colors.black,
+              onPressed: () {
+                DataManager.searchListAction("")
+                    .then((value) => widget.articles = value);
+                setState(() {
+                  selectSearch = false;
+                });
+              },
+            ),
+            elevation: 10.0,
+            centerTitle: false,
+            backgroundColor: Colors.white,
+            title: Container(
+              padding: EdgeInsets.only(left: 15),
+              height: 40,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Colors.black12),
+              child: TextField(
+                onChanged: (value) {},
+                onSubmitted: _onSubmitted,
+                decoration: InputDecoration(
+                    border: InputBorder.none, hintText: 'Search'),
+              ),
+            ));
   }
 
   void _onSubmitted(String name) async {
@@ -90,21 +90,21 @@ class _BookmarksScreen extends State<BookmarksScreen> {
   Widget body() {
     if (startLoading) {
       return Center(
-        child: Loading(indicator: BallPulseIndicator(), size: 70.0, color: Colors.blue),
+        child: Loading(
+            indicator: BallPulseIndicator(), size: 70.0, color: Colors.blue),
       );
     } else {
       return ListViewWidget(
           articles: widget.articles,
           from: RemoveFrom.bookmark,
           changeListItems: widget.changeListItems);
-    };
+    }
+    ;
   }
 
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-        appBar: _appBarActionsReturnText(),
-        body: body());
+    return Scaffold(appBar: _appBarActionsReturnText(), body: body());
   }
 }
