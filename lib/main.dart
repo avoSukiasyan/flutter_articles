@@ -5,13 +5,8 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
-  @override
-  _MyApp createState() => _MyApp();
-}
-
 // Fixme why StatefulWidget, could be Stateless
-class _MyApp extends State<MyApp> {
+class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
