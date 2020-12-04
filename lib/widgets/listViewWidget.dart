@@ -3,6 +3,7 @@ import 'package:manufacturer/enum/enum.dart';
 import 'package:manufacturer/model/article.dart';
 import 'package:manufacturer/widgets/ItemWidget.dart';
 
+
 class ListViewWidget extends StatelessWidget {
   // Fixme make fields final
   List<Article> articles;

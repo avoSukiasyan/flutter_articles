@@ -20,7 +20,9 @@ class ItemWidget extends StatelessWidget {
   ItemWidget({@required this.from, this.article, this.changeListItems});
 
   Widget imageList() {
-    return this.article.images.isEmpty != true ?  NatureList(photos: this.article.images) : SizedBox(width: 5, height: 5);
+    return this.article.images.isEmpty != true
+        ? NatureList(photos: this.article.images)
+        : SizedBox(width: 5, height: 5);
   }
 
   @override
@@ -50,7 +52,7 @@ class ItemWidget extends StatelessWidget {
           ],
           // Use padding instead
           child: Container(
-            // Fixme left:0, default is 0
+              // Fixme left:0, default is 0
               padding: EdgeInsets.only(left: 0, top: 10),
               child: Column(
                 children: [

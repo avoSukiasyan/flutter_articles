@@ -9,14 +9,16 @@ class HomeScreen extends StatefulWidget {
   List<Article> articles;
   void Function(int id, ChangeList action, RemoveFrom from) changeListItems;
 
-  HomeScreen({@required this.articles, this.changeListItems,});
+  HomeScreen({
+    @required this.articles,
+    this.changeListItems,
+  });
 
   @override
   _HomeScreen createState() => _HomeScreen();
 }
 
 class _HomeScreen extends State<HomeScreen> {
-
   @override
   void initState() {
     // TODO: implement initState
@@ -36,7 +38,8 @@ class _HomeScreen extends State<HomeScreen> {
         ),
         body: ListViewWidget(
           articles: widget.articles,
-          changeListItems: widget.changeListItems, from: RemoveFrom.articles,
+          changeListItems: widget.changeListItems,
+          from: RemoveFrom.articles,
         ));
   }
 }
