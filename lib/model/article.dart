@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:manufacturer/enum/enum.dart';
+import 'package:manufacturer/model/Location.dart';
 
 class Article {
   int id;
@@ -10,6 +9,7 @@ class Article {
   String title;
   String description;
   List<String> images;
+  Location location;
 
   Article(
       {this.id,
@@ -17,6 +17,7 @@ class Article {
       this.elapsedTimeInHour,
       this.bookmarked,
       this.userImage,
+      this.location,
       this.title,
       this.description,
       this.images});
@@ -30,6 +31,9 @@ class Article {
     title = json['title'];
     description = json['description'];
     images = json['images'].cast<String>();
+    if (json['location'] != null) {
+      location = Location.fromJson(json['location']) ?? Location();
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -42,6 +46,7 @@ class Article {
     data['title'] = this.title;
     data['description'] = this.description;
     data['images'] = this.images;
+    data['location'] = this.location;
     return data;
   }
 }
