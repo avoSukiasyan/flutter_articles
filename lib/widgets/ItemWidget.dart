@@ -52,18 +52,15 @@ class ItemWidget extends StatelessWidget {
           ],
           // Use padding instead
           child: Container(
-              // Fixme left:0, default is 0
-              padding: EdgeInsets.only(left: 0, top: 10),
               child: Column(
                 children: [
-                  // Fixme, do not separate content to different classes,
-                  // as those classes are only used here
                   ArticleWidget(article: this.article),
                   DescriptionWidget(description: this.article.description),
                   imageList(),
                   BottomLineWidget(),
                 ],
-              )),
+              )
+          ),
         ));
   }
 }

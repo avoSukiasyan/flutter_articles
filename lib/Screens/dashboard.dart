@@ -35,7 +35,7 @@ class _Dashboard extends State<Dashboard> with SingleTickerProviderStateMixin {
   void initState() {
     // TODO: implement initState
     super.initState();
-     // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
+    // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark);
     _tabController = new TabController(vsync: this, length: 2);
   }
 

@@ -8,7 +8,7 @@ class Article {
   String userImage;
   String title;
   String description;
-  List<String> images;
+  List<String> images = [];
   Location location;
 
   Article(

@@ -72,11 +72,13 @@ class _DetailScreen extends State<DetailScreen> {
               height: 20,
             )),
             onPressed: () {
-              Navigator.of(context).push(
-
+              Navigator.push(
+                context,
                 PageRouteBuilder(
-                  pageBuilder: (context, _, __) => MapScreen(article: widget.article), opaque: false),
-                );
+                    pageBuilder: (context, Animation<double> animation,
+                        Animation<double> secondaryAnimation) => MapScreen(location: widget.article.location),
+                    opaque: false),
+              );
             },
           )
         : SizedBox();

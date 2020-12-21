@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:manufacturer/model/article.dart';
 
@@ -5,6 +7,25 @@ class ImagesWidget extends StatelessWidget {
   Article article;
 
   ImagesWidget({@required this.article});
+
+  Image setImage( String imagePath) {
+    if (imagePath.contains('https')) {
+      return Image.network(
+        imagePath,
+        fit: BoxFit.fill,
+        errorBuilder: (BuildContext context, Object exception, StackTrace stackTrace) {
+          return Text('Your error widget...');
+        },
+      );
+    } else {
+      return Image.file( File(imagePath),
+        fit: BoxFit.fill,
+        errorBuilder: (BuildContext context, Object exception, StackTrace stackTrace) {
+          return Text('Your error widget...');
+        },
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +42,7 @@ class ImagesWidget extends StatelessWidget {
           children: this.article.images.map((String item) {
             return Container(
                 padding: EdgeInsets.all(2),
-                child: Image.network(
-                  item,
-                  fit: BoxFit.fill,
-                  errorBuilder: (BuildContext context, Object exception, StackTrace stackTrace) {
-                    return Text('Your error widget...');
-                  },
-                ));
+                child: setImage(item));
           }).toList(),
         ));
   }

@@ -21,7 +21,12 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
-
+  path_provider:
+  firebase_storage:
+  geolocator:
+  permission_handler:
+  image_picker:
+  google_maps_flutter:
   http: ^0.12.2
   loading: ^1.0.2
   flutter_slidable:
@@ -35,6 +40,12 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  flutter_launcher_icons:
+flutter_icons:
+    image_path: "assets/images/icon1.png"
+    android: true
+    ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

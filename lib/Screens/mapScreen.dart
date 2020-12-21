@@ -1,17 +1,17 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:manufacturer/model/article.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:manufacturer/model/Location.dart';
 import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
-import 'dart:ui' as ui;
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:manufacturer/model/Location.dart';
 
-import 'package:manufacturer/widgets/dismissWidget.dart';
+typedef MarkerOutput = void Function( Location loc );
 
 class MapScreen extends StatefulWidget {
-  Article article;
+  Location location;
+  MarkerOutput out;
 
-  MapScreen({@required this.article});
+  MapScreen({this.location, this.out});
 
   @override
   _MapScreen createState() => _MapScreen();
@@ -22,16 +22,30 @@ class _MapScreen extends State<MapScreen> {
   String _mapStyle;
 
   CameraPosition setPosition() {
+    if (widget.location == null) {
+      return CameraPosition(
+        target: LatLng(40.8987987, 41.080808),
+        zoom: 5,
+      );
+    }
     return CameraPosition(
-      target: LatLng(
-          widget.article.location.latitude, widget.article.location.longitude),
+      target: LatLng(widget.location.latitude, widget.location.longitude),
       zoom: 5,
     );
   }
 
-  Future<void> _goMap() async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newCameraPosition(setPosition()));
+  List<Marker> addMarkers() {
+    List<Marker> _markers = [];
+    if (widget.location != null) {
+      _markers.addAll([
+        Marker(
+          markerId: MarkerId('Location'),
+          infoWindow: InfoWindow(title: 'The title of the marker'),
+          position: LatLng(widget.location.latitude, widget.location.longitude),
+        )
+      ]);
+    }
+    return _markers;
   }
 
   @override
@@ -45,29 +59,39 @@ class _MapScreen extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Stack(
-      children: [
-        DismissWidget(dismissCallBack: null),
-        Center(
-            child: BackdropFilter(
-          filter: ui.ImageFilter.blur(
-            sigmaX: 6.0,
-            sigmaY: 6.0,
-          ),
+    return Scaffold(
+        backgroundColor: Colors.transparent,
+        body: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
           child: Container(
-            width: 300,
-            height: 300,
-            child: GoogleMap(
-              initialCameraPosition: setPosition(),
-              onMapCreated: (GoogleMapController controller) {
-                _controller.complete(controller);
-                controller.setMapStyle(_mapStyle);
-              },
-            ),
+            color: Colors.white.withOpacity(0.8),
+            width: 500,
+            height: 800,
+            child: Center(
+                child: Container(
+              color: Colors.transparent,
+              width: 300,
+              height: 400,
+              child: GoogleMap(
+                  onTap: (loc) {
+                    var location = Location();
+                    location.latitude = loc.latitude;
+                    location.longitude = loc.longitude;
+                    widget.out(location);
+                    Navigator.pop(context);
+                  },
+                  myLocationButtonEnabled: true,
+                  myLocationEnabled: true,
+                  initialCameraPosition: setPosition(),
+                  markers: Set<Marker>.of(addMarkers()),
+                  mapType: MapType.normal,
+                  onMapCreated: (GoogleMapController controller) {
+                    _controller.complete(controller);
+                  }),
+            )),
           ),
-        ))
-      ],
-    );
+        ));
   }
 }

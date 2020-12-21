@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:manufacturer/model/article.dart';
@@ -6,6 +8,27 @@ class AvatarWidgete extends StatelessWidget {
   Article article;
 
   AvatarWidgete({this.article});
+
+  Image setAvatar() {
+    if (article.userImage !=null) {
+      if (article.userImage.contains('https')) {
+        return Image.network(
+          this.article.userImage,
+          width: 60,
+          height: 60,
+          fit: BoxFit.cover,
+        );
+      } else {
+        return Image.file(File(this.article.userImage),
+          width: 60,
+          height: 60,
+          fit: BoxFit.cover,
+        );
+      }
+    } else {
+      return Image();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +50,8 @@ class AvatarWidgete extends StatelessWidget {
                 Container(
                   alignment: Alignment.centerRight,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(30),
-                    child: Image.network(
-                      this.article.userImage,
-                      width: 60,
-                      height: 60,
-                    ),
+                    borderRadius: BorderRadius.circular(20),
+                    child: setAvatar()
                   ),
                 )
               ],

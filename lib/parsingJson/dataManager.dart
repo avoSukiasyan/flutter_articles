@@ -65,8 +65,7 @@ class DataManager {
   }
 
   static Future<List<Article>> searchListAction(String name) async {
-    // Fixme use !name.isEmpty ?? false
-    if (!name.isEmpty) {
+    if (name?.isNotEmpty) {
       final list = await getSearchData(name);
       return list;
     } else {
