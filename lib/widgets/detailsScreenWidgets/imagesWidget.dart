@@ -8,18 +8,18 @@ class ImagesWidget extends StatelessWidget {
 
   ImagesWidget({@required this.article});
 
-  Image setImage( String imagePath) {
+  Image getImage( String imagePath) {
     if (imagePath.contains('https')) {
       return Image.network(
         imagePath,
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
         errorBuilder: (BuildContext context, Object exception, StackTrace stackTrace) {
           return Text('Your error widget...');
         },
       );
     } else {
-      return Image.file( File(imagePath),
-        fit: BoxFit.fill,
+      return Image.file(File(imagePath),
+        fit: BoxFit.cover,
         errorBuilder: (BuildContext context, Object exception, StackTrace stackTrace) {
           return Text('Your error widget...');
         },
@@ -31,8 +31,16 @@ class ImagesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // TODO: implement build
     // Fixme better to use slivers
+    // CustomScrollView(
+    //   slivers: [
+    //     SliverList(delegate: SliverChildBuilderDelegate())
+    //     SliverGrid(delegate: null, gridDelegate: null)
+    //     SliverToBoxAdapter(child: ,)
+    //   ],
+    // );
     return Container(
         width: MediaQuery.of(context).size.width,
+        margin: EdgeInsets.all(8.0),
         height: (this.article.images.length * 150).toDouble(),
         child: GridView(
           padding: EdgeInsets.only(top: 10),
@@ -42,7 +50,7 @@ class ImagesWidget extends StatelessWidget {
           children: this.article.images.map((String item) {
             return Container(
                 padding: EdgeInsets.all(2),
-                child: setImage(item));
+                child: getImage(item));
           }).toList(),
         ));
   }

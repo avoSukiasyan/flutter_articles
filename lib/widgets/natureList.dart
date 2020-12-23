@@ -19,12 +19,11 @@ class NatureList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Container(
-        padding: EdgeInsets.only(right: 20, left: 10, top: 6),
+    return SizedBox(
         height: checkPhotos(),
         child: photos.length == 0
-        // Fixme change to Container,
-        // Fixme why is this
+            // Fixme change to Container,
+            // Fixme why is this
             ? SizedBox(
                 child: Container(
                   color: Colors.white,
@@ -36,7 +35,9 @@ class NatureList extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 children: this
                     .photos
-                    .map((String item) => ImageItemWidget(imageUrl: item))
+                    .map((String item) => Padding(
+                        padding: EdgeInsets.only(top: 8.0, left: 8.0),
+                        child: ImageItemWidget(imageUrl: item)))
                     .toList(),
               ));
   }

@@ -1,10 +1,11 @@
 import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:manufacturer/Screens/mapScreen.dart';
 import 'package:manufacturer/model/Location.dart';
 import 'package:manufacturer/model/article.dart';
-import 'package:image_picker/image_picker.dart';
 
 typedef CreateArticleOutput = void Function(Article art);
 
@@ -237,6 +238,7 @@ class _CreateArticle extends State<CreateArticle> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar,
+      resizeToAvoidBottomPadding: true,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
@@ -257,61 +259,66 @@ class _CreateArticle extends State<CreateArticle> {
           height: 20,
         )),
       ),
-      body: ListView(
-        padding: EdgeInsets.only(left: 5),
-        children: [
-          Expanded(
-              child: TextField(
-            onEditingComplete: _addAppBar,
-            onChanged: (value) {
-              newArticle.title = value;
-              _addAppBar();
-              setState(() {
-                appBar;
-              });
-            },
-            decoration:
-                InputDecoration(border: InputBorder.none, hintText: "Subject"),
-          )),
-          Row(children: [
-            Expanded(
+      body: Padding(
+        padding: const EdgeInsets.only(left:16.0,top:16.0,right:16.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Flexible(
                 child: TextField(
+                  maxLines: null,
+              onEditingComplete: _addAppBar,
               onChanged: (value) {
-                newArticle.userName = value;
+                newArticle.title = value;
                 _addAppBar();
-                setState(() {
-                  appBar;
-                });
+                setState(() {});
               },
-              decoration: InputDecoration(
-                  border: InputBorder.none, hintText: "Author Name"),
+              style: TextStyle(fontSize: 28,
+                  fontWeight: FontWeight.bold),
+              decoration:
+                  InputDecoration(border: InputBorder.none, hintText: "Subject"),
             )),
-            setAvatar(),
-          ]),
-          Expanded(
-              child: TextField(
-            onChanged: (value) {
-              newArticle.description = value;
-              _addAppBar();
-              setState(() {
-                appBar;
-              });
-            },
-            decoration: InputDecoration(
-                border: InputBorder.none, hintText: "Article Text"),
-          )),
-          Container(
-            height: imagesHeight(),
-            child: GridView(
-              padding: EdgeInsets.only(right: 30, top: 30),
-              gridDelegate:
-                  SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-              physics: BouncingScrollPhysics(),
-              children: getImages(),
+            Row(children: [
+              Flexible(
+                  child: TextField(
+                    maxLines: null,
+                onChanged: (value) {
+                  newArticle.userName = value;
+                  _addAppBar();
+                  setState(() {});
+                },
+                style: TextStyle(fontSize: 24, fontWeight: FontWeight.w600),
+                decoration: InputDecoration(
+                    border: InputBorder.none, hintText: "Author Name"),
+              )),
+              setAvatar(),
+            ]),
+            Flexible(
+                child: TextField(
+                  maxLines: null,
+              maxLengthEnforced: true,
+              onChanged: (value) {
+                newArticle.description = value;
+                _addAppBar();
+                setState(() {});
+              },
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+              decoration: InputDecoration(
+                  border: InputBorder.none, hintText: "Article Text"),
+            )),
+            Container(
+              height: imagesHeight(),
+              child: GridView(
+                padding: EdgeInsets.only(right: 30, top: 30),
+                gridDelegate:
+                    SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+                physics: BouncingScrollPhysics(),
+                children: getImages(),
+              ),
             ),
-          ),
-          showLocationLatLong(),
-        ],
+            showLocationLatLong(),
+          ],
+        ),
       ),
     );
   }

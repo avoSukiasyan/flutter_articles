@@ -6,8 +6,9 @@ import 'dart:convert';
 import 'package:manufacturer/model/article.dart';
 import 'package:http/http.dart' as http;
 
-// Fixme create  singleton class for this
+// Fixme create  singleton class for this, or use InheritedWidget
 class DataManager {
+
   static List<Article> articles = [];
   static List<Article> bookmarksArticles = [];
 

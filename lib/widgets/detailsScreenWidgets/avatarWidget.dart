@@ -9,7 +9,7 @@ class AvatarWidgete extends StatelessWidget {
 
   AvatarWidgete({this.article});
 
-  Image setAvatar() {
+  Widget setAvatar() {
     if (article.userImage !=null) {
       if (article.userImage.contains('https')) {
         return Image.network(
@@ -25,9 +25,8 @@ class AvatarWidgete extends StatelessWidget {
           fit: BoxFit.cover,
         );
       }
-    } else {
-      return Image();
-    }
+    } else
+      SizedBox.shrink();
   }
 
   @override
@@ -46,11 +45,10 @@ class AvatarWidgete extends StatelessWidget {
                   child: Text(
                       '${article.userName} - ${this.article.runtimeType} hrs ago'),
                 ),
-                // Fixme use Alignment
-                Container(
+                Align(
                   alignment: Alignment.centerRight,
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
+                    borderRadius: BorderRadius.circular(90),
                     child: setAvatar()
                   ),
                 )

@@ -8,14 +8,15 @@ import 'package:manufacturer/widgets/descriptionWidget.dart';
 import 'package:manufacturer/widgets/natureList.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+typedef ChangeListener = void Function(int id, ChangeList action, RemoveFrom from);
+
 class ItemWidget extends StatelessWidget {
   Article article;
 
   RemoveFrom from;
 
-  // Fixme use typeAlias
-  final void Function(int id, ChangeList action, RemoveFrom from)
-      changeListItems;
+  // Fixme use typedef
+  final ChangeListener changeListItems;
 
   ItemWidget({@required this.from, this.article, this.changeListItems});
 
@@ -27,7 +28,6 @@ class ItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return InkResponse(
         onTap: () {
           // Fixme move tap handling out of item

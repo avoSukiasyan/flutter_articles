@@ -15,7 +15,7 @@ class DescriptionWidget extends StatelessWidget {
       padding: EdgeInsets.only(top: 5, right: 75, left: 10),
       child: Text(
         '${this.description}',
-        style: TextStyle(fontSize: 11),
+        style: TextStyle(fontSize: 16),
         maxLines: 1,
       ),
     );

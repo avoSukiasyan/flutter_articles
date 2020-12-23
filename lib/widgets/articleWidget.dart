@@ -22,20 +22,16 @@ class ArticleWidget extends StatelessWidget {
         : SizedBox();
   }
 
-  Image setAvatar() {
+  Widget profileImage() {
     if (article.userImage == null) {
-      return Image();
+      return SizedBox.shrink();
     }
     if (article.userImage.contains('https')) {
       return Image.network(this.article.userImage,
-        width: 48,
-        height: 48,
         fit: BoxFit.cover,
       );
     } else {
       return Image.file( File(this.article.userImage),
-        width: 48,
-        height: 48,
         fit: BoxFit.cover,
       );
     }
@@ -72,9 +68,13 @@ class ArticleWidget extends StatelessWidget {
                 ],
               ),
             ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: setAvatar()
+            SizedBox(
+              width: 48,
+              height: 48,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(90.0),
+                child: profileImage()
+              ),
             ),
           ],
         ),

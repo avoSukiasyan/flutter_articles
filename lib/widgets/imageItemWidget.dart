@@ -8,20 +8,20 @@ class ImageItemWidget extends StatelessWidget {
 
   ImageItemWidget({this.imageUrl});
 
-  Widget setImage() {
+  Widget articleImage() {
     if (imageUrl.contains('https')) {
       return Image.network(
         this.imageUrl,
-        height: 130,
-        width: 140,
-        fit: BoxFit.fill,
+        height: 114,
+        width: 169,
+        fit: BoxFit.cover,
         errorBuilder:
             (BuildContext context, Object exception, StackTrace stackTrace) {
           return Text('Your error widget...');
         },
       );
     } else {
-      Image.file(File(imageUrl), height: 130, width: 140, fit: BoxFit.fill,
+      Image.file(File(imageUrl), height: 114, width: 169, fit: BoxFit.cover,
           errorBuilder:
               (BuildContext context, Object exception, StackTrace stackTrace) {
         return Text('Your error widget...');
@@ -31,9 +31,6 @@ class ImageItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Row(
-      children: [setImage(), SizedBox()],
-    );
+    return articleImage();
   }
 }
